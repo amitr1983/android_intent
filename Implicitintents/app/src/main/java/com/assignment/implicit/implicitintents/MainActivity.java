@@ -25,8 +25,10 @@ public class MainActivity extends AppCompatActivity {
     public void openUrl(View view) {
         EditText urlText = (EditText) findViewById(R.id.urlText);
         String urlPlaceHolder = urlText.getText().toString();
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlPlaceHolder));
-        startActivity(intent);
+        Intent intentUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(urlPlaceHolder));
+        if (intentUrl.resolveActivity(getPackageManager()) != null) {
+            startActivity(intentUrl);
+        }
     }
 
     /* Get the phone umber from textbox and create an intent for dialing the phone number*/
